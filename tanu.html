@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a0a;
+    color: #fff;
+    text-align: center;
+}
+
+header {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #2a004f, #6a00ff);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.glow-text {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #6a00ff, 0 0 20px #6a00ff, 0 0 40px #6a00ff;
+}
+
+.typing-text {
+    font-size: 1.5rem;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    width: 300px;
+    text-align: left;
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #6a00ff;
+}
+
+footer {
+    background: #1a1a1a;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1.5s ease-in;
+} 
+    a {
+      color: #8080ff;
+      text-decoration: none; /* Remove underline */
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #b3b3ff;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="glow-text">Welcome to My Resume</h1>
+        <p class="typing-text">I'm <span id="name">Shaik Tanisha</span>, also known as <span id="nickname">Tanu</span>.</p>
+    </header>
+
+    <section class="container">
+        <div class="card slide-in">
+            <h2>About Me</h2>
+            <p>Hello! i am a student who loves English and Maths and is passionate about coding.my dream of a bike ride from Kerala to Ladakh and have an adventurous spirit.my sister is in 7th grade. Plus, my birthday is on May 4—coming up soon!
+
+.</p>
+        </div>
+
+        <div class="card slide-in">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Coding</li>
+                <li>Bike Riding</li>
+                <li>Traveling</li>
+                <li>Music</li>
+                <li>Watching Movies</li>
+                <li>K-drama</li>
+                <li>foodie</li>
+                <li>arts</li>
+                
+                
+                
+            </ul>
+        </div>
+
+        <div class="card slide-in">
+            <h2>Qualifications</h2>
+            <li>10th class</li>
+            <li>MPC</li>
+            <li>NCC - "A" certificate</li>
+            <li>Scout's and guides</li>
+           
+            
+            
+        </div>
+
+        <div class="card slide-in">
+            <h2>Skills</h2>
+            <ul>
+                <li>Web Development</li>
+                <li>JavaScript & CSS Animations</li>
+                <li>Problem-Solving</li>
+                <li>Teamwork</li>
+                <li>pencil art</li>
+                <li>music-violen</li>
+                <li>NCC</li>
+                <li>Scout's and guides</li>
+                <li>western and classical dance</li>
+               
+                
+            </ul>
+        </div>
+
+        <div class="card slide-in">
+            <h2>Contact</h2>
+            <div class="email">
+              <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tanushaik00@gmail.com">Chat with me on Gmail</a>       
+            </div>
+
+            <p>Phone: +91 9014781047</p>
+        </div>
+    </section>
+
+    <footer class="fade-in">
+        <p>&copy; By your Tanisha made with 💜</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".slide-in");
+    const fadeInFooter = document.querySelector("footer");
+
+    function checkScroll() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight - 100) {
+                section.style.opacity = 1;
+                section.style.transform = "translateY(0)";
+            }
+        });
+
+        if (fadeInFooter.getBoundingClientRect().top < window.innerHeight - 50) {
+            fadeInFooter.style.opacity = 1;
+        }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
+
+    function typeEffect(element, text, speed) {
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, speed);
+            }
+        }
+        element.innerHTML = "";
+        typing();
+    }
+
+    typeEffect(document.querySelector(".typing-text"), "I'm Your Shaik Tanisha, also known as Tanu.", 100);
+});
+    </script>
+
+</body>
+</html>
