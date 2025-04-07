@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annaprashan Ceremony Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --deep-red: #800020;
+      --cream: #FFF5E1;
+      --shadow: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #fff7e6 0%, #ffe5b4 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      display: none;
+      position: relative;
+      padding: 2em;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+
+    .page.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .invitation-card {
+      background: var(--cream);
+      width: 90%;
+      max-width: 800px;
+      padding: 3em 2em;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px var(--shadow);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+    }
+
+    .invitation-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 15px,
+        var(--gold) 15px,
+        var(--gold) 30px
+      );
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Great Vibes', cursive;
+      margin: 0.5em 0;
+      color: var(--deep-red);
+    }
+
+    h1 { font-size: 3.5em; }
+    h2 { font-size: 2.5em; }
+    p { 
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 1em auto;
+    }
+
+    .decorative {
+      position: absolute;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .rice-grains {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .rice-grain {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: float 6s infinite linear;
+    }
+
+    .btn-container {
+      margin-top: 2em;
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1em 2em;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, var(--gold), #FFD700);
+      color: var(--deep-red);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn i {
+      font-size: 1.2em;
+    }
+
+    #typingText {
+      font-size: 1.3em;
+      min-height: 2em;
+      border-right: 2px solid var(--deep-red);
+      animation: blinkCaret 0.75s step-end infinite;
+    }
+
+    .animated-rice-bowl {
+      width: 120px;
+      margin: 1em auto;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blinkCaret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--deep-red); }
+    }
+
+    @media (max-width: 768px) {
+      .invitation-card {
+        padding: 2em 1em;
+        width: 95%;
+      }
+      h1 { font-size: 2.5em; }
+      h2 { font-size: 2em; }
+      .btn { padding: 0.8em 1.5em; }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Add animated rice grains -->
+  <div class="rice-grains"></div>
+
+  <!-- PAGE 1 -->
+  <div id="page1" class="page active">
+    <div class="invitation-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" class="animated-rice-bowl" alt="Rice Bowl">
+      <h1>Annaprashan Ceremony</h1>
+      <h1>Jashvi Aira First Bite</h1>
+      <p id="typingText"></p>
+      <div class="btn-container">
+        <button class="btn" onclick="showPage('page2')">
+          <i class="fas fa-arrow-right"></i>Details
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div id="page2" class="page">
+    <div class="invitation-card">
+      <h2>Event Details</h2>
+      <div class="details-box">
+        <p><i class="fas fa-calendar-alt"></i> Thursday, 30 May 2024</p>
+        <p><i class="fas fa-clock"></i> 10:00 AM onwards</p>
+        <p><i class="fas fa-map-marker-alt"></i> The Club House Royal Apartments<br>
+           130 Dasani Road, Mathikere Bangalore - 21</p>
+      </div>
+      <div class="btn-container">
+        <button class="btn" onclick="showPage('page3')">
+          <i class="fas fa-heart"></i>RSVP
+        </button>
+        <button class="btn" onclick="showPage('page1')">
+          <i class="fas fa-home"></i>Home
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div id="page3" class="page">
+    <div class="invitation-card">
+      <h2>Celebrate With Us!</h2>
+      <p>Your presence is our pleasure. Please confirm your attendance:</p>
+      <div class="btn-container">
+        <button class="btn" onclick="alert('🎉 Thank you for accepting!')">
+          <i class="fas fa-check"></i>Attending
+        </button>
+        <button class="btn" onclick="alert('We\'ll miss you! ❤️')">
+          <i class="fas fa-times"></i>Regret
+        </button>
+      </div>
+      <div class="btn-container">
+        <button class="btn" onclick="showPage('page2')">
+          <i class="fas fa-arrow-left"></i>Back
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Improved typing effect
+    const texts = ["Bless jashvi aira First Meal", "Join Our Celebration", "A Sacred Tradition"];
+    let textIndex = 0;
+    let charIndex = 0;
+    const typingEl = document.getElementById('typingText');
+
+    function typeWriter() {
+      if (charIndex < texts[textIndex].length) {
+        typingEl.innerHTML += texts[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 100);
+      } else {
+        setTimeout(eraseText, 2000);
+      }
+    }
+
+    function eraseText() {
+      if (charIndex > 0) {
+        typingEl.innerHTML = texts[textIndex].substring(0, charIndex-1);
+        charIndex--;
+        setTimeout(eraseText, 50);
+      } else {
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(typeWriter, 500);
+      }
+    }
+
+    // Create animated rice grains
+    function createRiceGrains() {
+      const container = document.querySelector('.rice-grains');
+      for (let i = 0; i < 50; i++) {
+        const grain = document.createElement('div');
+        grain.className = 'rice-grain';
+        grain.style.left = Math.random() * 100 + 'vw';
+        grain.style.top = Math.random() * 100 + 'vh';
+        grain.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(grain);
+      }
+    }
+
+    // Page transition
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    // Initialize
+    window.addEventListener('load', () => {
+      typeWriter();
+      createRiceGrains();
+    });
+  </script>
+</body>
+</html>
